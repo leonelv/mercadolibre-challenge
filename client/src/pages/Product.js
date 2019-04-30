@@ -20,7 +20,6 @@ class ItemView extends Component {
   async componentWillMount() {
     const { id } = this.props.match.params
     await this.loadProduct(id)
-    console.log(id)
 
     if (Object.keys(this.props.item).length > 0) {
       await this.searchProduct(this.props.item.item.title)

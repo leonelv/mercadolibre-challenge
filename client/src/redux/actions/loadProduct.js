@@ -6,7 +6,7 @@ export const loadProduct = id => async dispatch => {
     let response = await fetch(`/api/items/${id}`)
     data = await response.json()
   } catch (e) {
-    console.log(e)
+    console.error(e)
   } finally {
     dispatch({
       data,

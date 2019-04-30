@@ -7,7 +7,7 @@ export const searchProduct = query => async dispatch => {
 
     data = await response.json()
   } catch (e) {
-    console.log(e)
+    console.error(e)
   } finally {
     dispatch({
       data,
