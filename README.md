@@ -14,7 +14,7 @@ El frontend y el backend corren en procesos separados, para mejor manejo de erro
 
 ## Instalación
 
-Solo hay que poner 
+Solo hay que poner
 
 ```bash
 $ npm i
@@ -40,5 +40,6 @@ $ yarn start
 
 ## Notas
 
-- Me hubiese gustado tener tiempo para implementar testing.
-- Hay otra branch que contiene el atributo "address" en la API que no fue requerido pero me parecio necesario.
+- Me hubiese gustado tener tiempo para implementar testing y documentar todo.
+- La otra branch contiene el atributo "address" en la API que no fue requerido pero me parecio necesario.
+- Es importante hacer un build y borrar el cache del navegador despues de cambiar de branch, asi podemos ver la diferencia.
