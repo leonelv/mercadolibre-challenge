@@ -2,7 +2,7 @@ import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import styles from './styles.module.scss'
 import Button from '../Button'
-const Product = ({ item: { condition, soldQuantity, title, price, description, picture } }) => (
+const Product = ({ item: { condition, sold_quantity, title, price, description, picture } }) => (
   <section className={styles.product}>
     <section className={styles.top}>
       <section className={styles.left}>
@@ -10,7 +10,7 @@ const Product = ({ item: { condition, soldQuantity, title, price, description, p
       </section>
       <section className={styles.right}>
         <p className={styles.sold}>
-          {condition === 'new' ? 'Nuevo' : 'Usado'} · {soldQuantity || 0} vendidos
+          {condition === 'new' ? 'Nuevo' : 'Usado'} · {sold_quantity || 0} vendidos
         </p>
         <p className={styles.title}>{title || 'title'}</p>
         <p className={styles.price}>$ {price.amount}</p>
