@@ -39,6 +39,6 @@ $ yarn start
 ```
 
 ## Notas
-
 - Me hubiese gustado tener tiempo para implementar testing.
 - Esta branch contiene el atributo "address" en la API que no fue requerido pero me parecio necesario.
+- Es importante hacer un build y borrar el cache del navegador despues de cambiar de branch, asi podemos ver la diferencia.

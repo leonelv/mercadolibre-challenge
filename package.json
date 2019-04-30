@@ -8,8 +8,9 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "cd client && npm i && npm run build && cd ../server && npm i",
-    "dev": "concurrently \"cd client && npm start\" \"cd server && npx nodemon backend\"",    
-    "start": "cd client && npm run build && cd .. && pm2 start ecosystem.config.js --env production"
+    "dev": "concurrently \"cd client && npm start\" \"cd server && npx nodemon backend\"",
+    "start": "cd client && npm run build && cd .. && pm2 start ecosystem.config.js --env production",
+    "build": "cd client && npm run build"
   },
   "dependencies": {
     "concurrently": "^4.1.0",
