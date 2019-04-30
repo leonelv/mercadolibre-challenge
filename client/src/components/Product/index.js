@@ -13,7 +13,10 @@ const Product = ({ item: { condition, sold_quantity, title, price, description, 
           {condition === 'new' ? 'Nuevo' : 'Usado'} · {sold_quantity || 0} vendidos
         </p>
         <p className={styles.title}>{title || 'title'}</p>
-        <p className={styles.price}>$ {price.amount}</p>
+        <p className={styles.price}>
+          $ {price.amount}
+          {price.decimals ? '.' + price.decimals : ''}
+        </p>
         <Button>Comprar</Button>
       </section>
     </section>
