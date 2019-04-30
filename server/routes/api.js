@@ -29,6 +29,7 @@ router.get('/items/:id', async (req, res) => {
     if (id) {
       const data = await getItemData(id)
       const description = await getItemDescription(id)
+
       res.json(adaptItems(data, description.plain_text))
     } else {
       res.status(404).send('not found')
