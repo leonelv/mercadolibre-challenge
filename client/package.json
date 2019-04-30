@@ -2,6 +2,9 @@
   "name": "meli-test",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">6.0.0"
+  },
   "dependencies": {
     "prop-types": "^15.7.2",
     "query-string": "^6.5.0",

@@ -6,6 +6,9 @@
   "repository": "https://github.com/leonelv/challenge-mercadolibre",
   "author": "leonelv",
   "license": "MIT",
+  "engines": {
+    "node": ">6.0.0"
+  },
   "scripts": {
     "postinstall": "cd client && npm i && npm run build && cd ../server && npm i",
     "dev": "concurrently \"cd client && npm start\" \"cd server && npx nodemon backend\"",
