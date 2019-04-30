@@ -1,0 +1,17 @@
+{
+  "name": "mercadolibre",
+  "version": "1.0.0",
+  "description": "Challenge Mercadolibre",
+  "main": "index.js",
+  "repository": "https://github.com/leonelv/challenge-mercadolibre",
+  "author": "leonelv",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "cd client && npm i && npm run build && cd ../server && npm i",
+    "dev": "pm2 start",
+    "start": "pm2 start --env production"
+  },
+  "dependencies": {
+    "pm2": "^3.5.0"
+  }
+}

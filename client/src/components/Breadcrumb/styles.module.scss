@@ -1,0 +1,22 @@
+@import '../../variables';
+
+.breadcrumb {
+  padding: $spacing1 0;
+
+  .crumb {
+    &:not(:last-child)::after {
+      content: '>';
+      margin: 0 10px;
+    }
+
+    &:last-child {
+      font-weight: bold;
+    }
+  }
+
+  a {
+    font-size: $category-size-font-size;
+    color: $less-dark-grey;
+    text-decoration: none;
+  }
+}

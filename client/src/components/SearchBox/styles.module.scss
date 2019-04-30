@@ -1,0 +1,42 @@
+@import '../../variables';
+
+.box {
+  position: relative;
+  flex: 1;
+  height: 36px;
+  display: flex;
+  input {
+    border: none;
+    border-radius: $radius 0 0 $radius;
+    font-size: $search-font-size;
+    width: 100%;
+    padding: 0 $spacing1;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.searchTrigger {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  background-color: $light-grey;
+  border-radius: 0 $radius $radius 0;
+  transition: background 0.25s ease;
+  cursor: pointer;
+  &:hover {
+    background-color: darken($light-grey, 2%);
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    background-image: url('/img/ic_Search.png');
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "meli-test-backend",
+  "version": "1.0.0",
+  "description": "Backend for mercadolibre challenge",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "leonelv",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "express": "^4.16.4",
+    "helmet": "^3.16.0",
+    "http-proxy-middleware": "^0.19.1",
+    "node-fetch": "^2.4.1"
+  }
+}
