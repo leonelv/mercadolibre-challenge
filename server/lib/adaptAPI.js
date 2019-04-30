@@ -17,7 +17,7 @@ function getPrice(price, currency_id) {
 module.exports = {
   adaptItems(data, description) {
     const { id, title, price, currency_id, condition, shipping, sold_quantity } = data
-    if (id && title && price && currency_id && condition && shipping && sold_quantity) {
+    if (id && title && price && currency_id && condition && shipping) {
       return {
         author,
         item: {
@@ -28,7 +28,7 @@ module.exports = {
           free_shipping: shipping.free_shipping,
           description,
           picture: data.pictures[0].secure_url,
-          sold_quantity
+          sold_quantity: sold_quantity || 0
         }
       }
     }

@@ -7,8 +7,6 @@ import Product from '../components/Product'
 import Breadcrumb from '../components/Breadcrumb'
 import Loading from '../components/Loading'
 import Error from '../components/Error'
-import NotFound from './404'
-
 
 class ItemView extends Component {
   constructor(props) {
@@ -22,6 +20,8 @@ class ItemView extends Component {
   async componentWillMount() {
     const { id } = this.props.match.params
     await this.loadProduct(id)
+    console.log(id)
+
     if (Object.keys(this.props.item).length > 0) {
       await this.searchProduct(this.props.item.item.title)
       this.setState({ hasID: true })
