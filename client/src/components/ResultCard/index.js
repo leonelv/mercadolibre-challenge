@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import styles from './styles.module.scss'
 
-const Card = ({ id, image, title, includesShipping, condition, price, currency }) => (
+const Card = ({ id, image, title, includesShipping, condition, price, currency, address }) => (
   <div className={styles.padding}>
     <div className={styles.card}>
       <Link to={`/items/${id}`}>
@@ -21,7 +21,9 @@ const Card = ({ id, image, title, includesShipping, condition, price, currency }
         </Link>
       </div>
       <div className={styles.last}>
-        <p>{condition === 'used' ? 'Usado' : 'Nuevo'}</p>
+        <p>
+          {condition === 'used' ? 'Usado' : 'Nuevo'} · {address}
+        </p>
       </div>
     </div>
   </div>
@@ -33,7 +35,8 @@ Card.propTypes = {
   title: PropTypes.string.isRequired,
   condition: PropTypes.string.isRequired,
   price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  includesShipping: PropTypes.bool.isRequired
+  includesShipping: PropTypes.bool.isRequired,
+  address: PropTypes.string.isRequired
 }
 
 export default Card

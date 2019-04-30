@@ -7,7 +7,7 @@ class ResultList extends Component {
   render() {
     return (
       <div className={styles.results}>
-        {this.props.results.map(({ id, title, price, picture, condition, free_shipping }) => (
+        {this.props.results.map(({ id, title, price, picture, condition, free_shipping, address }) => (
           <Card
             key={uuid()}
             id={id}
@@ -17,6 +17,7 @@ class ResultList extends Component {
             image={picture}
             includesShipping={free_shipping}
             condition={condition}
+            address={address}
           />
         ))}
       </div>

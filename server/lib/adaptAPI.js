@@ -40,13 +40,14 @@ module.exports = {
         data.filters[0] && data.filters[0].values && data.filters[0].values[0] && data.filters[0].values[0].path_from_root
           ? data.filters[0].values[0].path_from_root.map(({ name }) => name)
           : [],
-      items: data.results.slice(0, 4).map(({ id, title, price, currency_id, thumbnail, condition, shipping: { free_shipping } }) => ({
+      items: data.results.slice(0, 4).map(({ id, title, price, currency_id, thumbnail, condition, shipping: { free_shipping }, address }) => ({
         id,
         title,
         price: getPrice(price, currency_id),
         picture: thumbnail,
         condition,
-        free_shipping
+        free_shipping,
+        address: address.state_name
       }))
     }
   }
