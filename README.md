@@ -41,4 +41,4 @@ $ yarn start
 ## Notas
 
 - Me hubiese gustado tener tiempo para implementar testing.
-- Hay otra branch que contiene elementos en la API que no fueron requeridos pero me parecieron necesarios.
+- Esta branch contiene el atributo "address" en la API que no fue requerido pero me parecio necesario.
