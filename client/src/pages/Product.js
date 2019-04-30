@@ -6,11 +6,14 @@ import { loadProduct } from '../redux/actions/loadProduct'
 import Product from '../components/Product'
 import Breadcrumb from '../components/Breadcrumb'
 import Loading from '../components/Loading'
+import Error from '../components/Error'
+import NotFound from './404'
+
 
 class ItemView extends Component {
   constructor(props) {
     super(props)
-    this.state = { hasID: false }
+    this.state = { hasID: false, notFound: false }
     this.searchProduct = this.props.searchProduct.bind(this)
     this.resetSearch = this.props.resetSearch.bind(this)
     this.loadProduct = this.props.loadProduct.bind(this)
@@ -22,22 +25,12 @@ class ItemView extends Component {
     if (Object.keys(this.props.item).length > 0) {
       await this.searchProduct(this.props.item.item.title)
       this.setState({ hasID: true })
+    } else {
+      this.setState({ notFound: true })
     }
-    /* this.updateSearch()
-    this.unlistenRouteChange = this.props.history.listen(this.updateSearch) */
   }
 
   componentWillUnmount() {
-    /* const regex = /^\/items\/([^\/]+?)(?:\/)?$/i
-    if (regex.test(this.props.match.url)) {
-      const { id } = this.props.match.params
-      await this.loadProduct(id)
-
-      if (Object.keys(this.props.item).length > 0) {
-        await this.searchProduct(this.props.item.item.title)
-        this.setState({ hasID: true })
-      }
-    } */
     this.resetSearch()
   }
 
@@ -49,6 +42,8 @@ class ItemView extends Component {
             <Breadcrumb categories={Object.keys(this.props.results).length > 0 ? this.props.results.categories : []} />
             <Product item={this.props.item.item} />
           </>
+        ) : this.state.notFound ? (
+          <Error message="Página no encontrada" />
         ) : (
           <Loading />
         )}

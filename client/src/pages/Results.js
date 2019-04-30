@@ -6,11 +6,12 @@ import { searchProduct, resetSearch } from '../redux/actions/searchAction'
 import Breadcrumb from '../components/Breadcrumb'
 import ResultList from '../components/ResultList'
 import Loading from '../components/Loading'
+import Error from '../components/Error'
 
 class Results extends Component {
   constructor(props) {
     super(props)
-    this.state = { hasQuery: false }
+    this.state = { hasQuery: false, notFound: false, noResults: false }
     this.searchProduct = this.props.searchProduct.bind(this)
     this.resetSearch = this.props.resetSearch.bind(this)
   }
@@ -28,13 +29,22 @@ class Results extends Component {
     this.unlistenRouteChange()
   }
 
-  updateSearch = () => {
+  updateSearch = async () => {
     this.resetSearch()
     const { search } = window.location
     const query = queryString.parse(search)
-    if (query.search) {
+
+    if (typeof query.search) {
       this.setState({ hasQuery: true })
-      this.searchProduct(query.search)
+      await this.searchProduct(query.search)
+
+      if (Object.keys(this.props.results).length === 0) {
+        this.setState({ noResults: true })
+      }
+    }
+
+    if (query.search === undefined) {
+      this.setState({ notFound: true })
     }
   }
 
@@ -46,6 +56,10 @@ class Results extends Component {
             <Breadcrumb categories={this.props.results.categories} />
             <ResultList results={this.props.results.items} />
           </>
+        ) : this.state.notFound ? (
+          <Error message="Página no encontrada" />
+        ) : this.state.noResults ? (
+          <Error message="No se encontraron resultados" />
         ) : (
           <Loading />
         )}

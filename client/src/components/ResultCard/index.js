@@ -21,7 +21,7 @@ const Card = ({ id, image, title, includesShipping, condition, price, currency }
         </Link>
       </div>
       <div className={styles.last}>
-        <p>{condition === 'used'? 'Usado': 'Nuevo'}</p>
+        <p>{condition === 'used' ? 'Usado' : 'Nuevo'}</p>
       </div>
     </div>
   </div>
@@ -31,7 +31,6 @@ Card.propTypes = {
   id: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  productTitle: PropTypes.string.isRequired,
   condition: PropTypes.string.isRequired,
   price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   includesShipping: PropTypes.bool.isRequired

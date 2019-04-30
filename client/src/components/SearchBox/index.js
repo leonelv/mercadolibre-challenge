@@ -16,9 +16,15 @@ function SearchBox(props) {
     setValue(searchValue.search || '')
   })
 
+  const handleKeyPress = e => {
+    if (e.key === 'Enter') {
+      handleSearch()
+    }
+  }
+
   return (
     <div className={styles.box}>
-      <input type="text" onChange={handleValueChange} placeholder="Nunca dejes de buscar" value={inputValue} />
+      <input type="text" onChange={handleValueChange} placeholder="Nunca dejes de buscar" value={inputValue} onKeyPress={handleKeyPress} />
       <div className={styles.searchTrigger} onClick={handleSearch} />
     </div>
   )

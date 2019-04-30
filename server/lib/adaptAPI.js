@@ -4,35 +4,34 @@ const author = {
 }
 
 function getPrice(price, currency_id) {
-  let priceObj = { currency: currency_id }
-  let [amount, decimals] = price.toString().split('.')
-  priceObj.amount = parseInt(amount)
-  priceObj.decimals = parseInt(decimals) || 0
-  return priceObj
+  if (price && currency_id) {
+    let priceObj = { currency: currency_id }
+    let [amount, decimals] = price.toString().split('.')
+    priceObj.amount = parseInt(amount)
+    priceObj.decimals = parseInt(decimals) || 0
+    return priceObj
+  }
+  return {}
 }
 
 module.exports = {
   adaptItems(data, description) {
-    const {
-      id,
-      title,
-      price,
-      currency_id,
-      condition,
-      shipping: { free_shipping }
-    } = data
-    return {
-      author,
-      item: {
-        id,
-        title,
-        price: getPrice(price, currency_id),
-        condition,
-        free_shipping,
-        description,
-        picture: data.pictures[0].secure_url
+    const { id, title, price, currency_id, condition, shipping } = data
+    if (id && title && price && currency_id && condition && shipping) {
+      return {
+        author,
+        item: {
+          id,
+          title,
+          price: getPrice(price, currency_id),
+          condition,
+          free_shipping: shipping.free_shipping,
+          description,
+          picture: data.pictures[0].secure_url
+        }
       }
     }
+    return {}
   },
   adaptSearchResults(data) {
     return {

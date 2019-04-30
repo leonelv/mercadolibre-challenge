@@ -7,8 +7,12 @@ router.get('/items', async (req, res) => {
     const { q } = req.query
 
     if (q) {
-      const results = await searchQuery(encodeURI(q))
-      res.json(adaptSearchResults(results))
+      if (q === ':undefined' || q == undefined || q == '' || q == ':') {
+        res.send({})
+      } else {
+        const results = await searchQuery(encodeURI(q))
+        res.json(adaptSearchResults(results))
+      }
     } else {
       res.status(404).send('not found')
     }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import uuid from 'uuid/v4'
 import Card from '../ResultCard'
 import styles from './styles.module.scss'
 class ResultList extends Component {
@@ -8,6 +9,7 @@ class ResultList extends Component {
       <div className={styles.results}>
         {this.props.results.map(({ id, title, price, picture, condition, free_shipping }) => (
           <Card
+            key={uuid()}
             id={id}
             title={title}
             price={`${price.amount}${price.decimals ? '.' + price.decimals : ''}`}
@@ -23,12 +25,7 @@ class ResultList extends Component {
 }
 
 ResultList.propTypes = {
-  id: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  free_shipping: PropTypes.bool.isRequired,
-  condition: PropTypes.string.isRequired,
-  price: PropTypes.any.isRequired
+  results: PropTypes.array.isRequired
 }
 
 export default ResultList
