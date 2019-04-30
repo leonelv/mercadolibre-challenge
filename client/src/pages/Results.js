@@ -28,17 +28,20 @@ class Results extends Component {
     this.resetSearch()
     this.unlistenRouteChange()
   }
+  resetState = () => {
+    this.setState({ hasQuery: false, notFound: false, noResults: false })
+  }
 
   updateSearch = async () => {
     this.resetSearch()
     const { search } = window.location
     const query = queryString.parse(search)
-
+    this.resetState()
     if (typeof query.search) {
       this.setState({ hasQuery: true })
       await this.searchProduct(query.search)
 
-      if (Object.keys(this.props.results).length === 0) {
+      if (Object.keys(this.props.results).length === 0 || (this.props.results && this.props.results.items && this.props.results.items.length === 0)) {
         this.setState({ noResults: true })
       }
     }
@@ -51,7 +54,7 @@ class Results extends Component {
   render() {
     return (
       <div>
-        {this.state.hasQuery && Object.keys(this.props.results).length > 0 ? (
+        {/* this.state.hasQuery && Object.keys(this.props.results).length > 0 ? (
           <>
             <Breadcrumb categories={this.props.results.categories} />
             <ResultList results={this.props.results.items} />
@@ -62,7 +65,28 @@ class Results extends Component {
           <Error message="No se encontraron resultados" />
         ) : (
           <Loading />
-        )}
+        ) */
+
+        (() => {
+          if (this.state.notFound) {
+            return <Error message="Página no encontrada" />
+          }
+
+          if (this.state.noResults) {
+            return <Error message="No se encontraron resultados" />
+          }
+
+          if (this.state.hasQuery && Object.keys(this.props.results).length > 0) {
+            return (
+              <>
+                <Breadcrumb categories={this.props.results.categories} />
+                <ResultList results={this.props.results.items} />
+              </>
+            )
+          }
+
+          return <Loading />
+        })()}
       </div>
     )
   }
